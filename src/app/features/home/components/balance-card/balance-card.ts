@@ -1,5 +1,8 @@
-import {Component, input} from '@angular/core';
+import {Component, computed, input} from '@angular/core';
 import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle} from '@angular/material/card';
+
+type CardType = 'income' | 'outcome' | 'balance';
+type ValueCssClass = 'income' | 'outcome';
 
 @Component({
   selector: 'app-balance-card',
@@ -14,8 +17,19 @@ import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle} from '@angular/
 })
 export class BalanceCard {
 
-  type = input.required<'income' | 'outcome' | 'balance'>();
+  type = input.required<CardType>();
   label = input.required<string>();
-   value = input.required<number>();
+  value = input.required<number>();
 
+  cssClass = computed<ValueCssClass>(() => {
+    if (this.type() === 'income') {
+      return 'income';
+    }
+
+    if (this.type() === 'outcome') {
+      return 'outcome';
+    }
+
+    return this.value() > 0 ? 'income' : 'outcome';
+  });
 }
