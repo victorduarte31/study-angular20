@@ -1,0 +1,20 @@
+<app-balance-card
+  class="card"
+  [label]="'Ganhos'"
+  [type]="'income'"
+  [value]="totalIncomes()"
+></app-balance-card>
+
+<app-balance-card
+  class="card"
+  [label]="'Gastos'"
+  [type]="'outcome'"
+  [value]="totalOutcomes()"
+></app-balance-card>
+
+<app-balance-card
+  class="card"
+  [label]="'Saldo atual'"
+  [type]="'balance'"
+  [value]="balance()"
+></app-balance-card>
