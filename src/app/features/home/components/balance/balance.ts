@@ -1,5 +1,6 @@
 import {Component, computed, input} from '@angular/core';
 import {BalanceCard} from "./components/balance-card/balance-card";
+import {Transactions} from '../../../../shared/transaction/interfaces/transactions';
 
 @Component({
   selector: 'app-balance',
@@ -11,7 +12,7 @@ import {BalanceCard} from "./components/balance-card/balance-card";
 })
 export class Balance {
 
-  transactions = input.required<{ value: number, type: string }[]>();
+  transactions = input.required<Transactions[]>();
 
   totalIncomes = computed(() => {
     return this.transactions()
