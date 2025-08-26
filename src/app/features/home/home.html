@@ -1,1 +1,5 @@
 <app-balance [transactions]="transaction()"></app-balance>
+
+@for (item of transaction(); track item) {
+  <app-transaction-item></app-transaction-item>
+}
