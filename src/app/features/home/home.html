@@ -1,5 +1,9 @@
 <app-balance [transactions]="transaction()"></app-balance>
 
-@for (item of transaction(); track item) {
-  <app-transaction-item [transaction]="item"></app-transaction-item>
-}
+<div class="transactions">
+  @for (item of transaction(); track item) {
+    <app-transaction-item [transaction]="item"></app-transaction-item>
+  } @empty {
+    <app-no-transactions></app-no-transactions>
+  }
+</div>
